@@ -4,15 +4,23 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FoodsComponent } from './foods/foods.component';
+import { FoodDetailComponent } from './food-detail/food-detail.component';
+import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FoodsComponent
+    FoodsComponent,
+    FoodDetailComponent,
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-	FormsModule
+	FormsModule,
+	AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Food} from '../food';
 import {FOODS} from '../mock-foods';
+import {FoodService} from '../food.service';
+
+
 
 @Component({
   selector: 'app-foods',
@@ -10,19 +13,23 @@ import {FOODS} from '../mock-foods';
 export class FoodsComponent implements OnInit {
 
 
-  foods = FOODS;
-  selectedFood: Food;
+  foods: Food[];
   
   
-  constructor() { }
+  
+  constructor(private foodService: FoodService) { }
 
   ngOnInit() {
+	this.getFoods();
   }
   
   
-  onSelect(food: Food): void {
-	this.selectedFood = food;
-  }
+ 
+  
+  getFoods(): void{
+	this.foodService.getFoods()
+		.subscribe(foods => this.foods = foods);
+}
 
 }
 
