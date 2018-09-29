@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Food} from '../food';
-import {FOODS} from '../mock-foods';
 import {FoodService} from '../food.service';
 
 
@@ -21,6 +20,20 @@ export class FoodsComponent implements OnInit {
 
   ngOnInit() {
 	this.getFoods();
+  }
+  
+  add(name: string): void {
+	name = name.trim();
+	if (!name) {return;}
+	this.foodService.addFood({name} as Food)
+		.subscribe(food => {
+			this.foods.push(food);
+		});
+  }
+  
+  delete(food: Food): void {
+	this.foods = this.foods.filter(h => h !==food);
+	this.foodService.deleteFood(food).subscribe();
   }
   
   
